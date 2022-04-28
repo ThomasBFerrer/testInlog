@@ -18,14 +18,7 @@
             <tr>
                 <th>Durée</th>
                 <td>
-                    {% set startDate = sortie.date ? sortie.date|date('H:i:s')  %}
-                    {% set difference = date().diff(date(startDate)) %}
-                    {% set leftHours = difference.h %}
-                    {% set leftMinutes = difference.i %}
-                    {% set leftSec = difference.s %}
-                    {{ leftHours }} heures.
-                    {{ leftMinutes }} minutes.
-                    {{ leftSec }} secondes.
+                   {{ sortie.duree}}
                 </td>
             </tr>
             <tr>

@@ -60,17 +60,16 @@ class Sortie
         return $this;
     }
 
-    public function getDuree(): ?\DateTimeInterface
+    public function getDuree(): ?string
     {
-        return $this->duree;
+        $now= new \DateTime();
+        if(null==$this->getDate()){
+            return null;
+        }
+        $this->duree=$now->diff($this->getDate());
+        return $this->duree->format('%i minutes');
     }
 
-    public function setDuree(\DateTimeInterface $duree): self
-    {
-        $this->duree = $duree;
-
-        return $this;
-    }
 
     public function getDistance(): ?string
     {
