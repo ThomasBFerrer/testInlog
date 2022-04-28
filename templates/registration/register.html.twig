@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer Compte{% endblock %}
+{% block titre %}<h1>Créer un compte</h1>{% endblock %}
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+       <p>{{ form_row(registrationForm.username, {
+            label: 'Pseudo'
+        }) }}</p>
+    <p>{{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de Passe'
+        }) }}</p>
+    <p>{{ form_row(registrationForm.agreeTerms, {
+            label: 'Accepter les conditions'
+        }) }}</p>
+
+    <button type="submit" class="btn btn-lg btn-primary">Valider</button>
+    <a href="{{ path('app_login') }}" class="btn btn-lg btn-primary">
+        Se Connecter
+    </a>
+    {{ form_end(registrationForm) }}
+{% endblock %}

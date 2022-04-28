@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre Séance{% endblock %}
+{% block titre %}<h1>Organisez votre séance</h1>{% endblock %}
+{% block body %}
+
+
+    {{ include('sortie/_form.html.twig') }}
+
+    <a href="{{ path('app_sortie_index') }}">Vos séances</a>
+{% endblock %}

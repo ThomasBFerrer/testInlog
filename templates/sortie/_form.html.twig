@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    <p>{{ form_row(form.type, {
+        label: 'Type'
+    }) }}</p>
+<p>{{ form_row(form.date) }}</p>
+<p>{{ form_row(form.distance, {
+    label: 'Distance'
+}) }}</p>
+<p>{{ form_row(form.com, {
+    label: 'Commentaire'
+}) }}</p>
+<br>
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

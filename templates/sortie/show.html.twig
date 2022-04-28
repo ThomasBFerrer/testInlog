@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie{% endblock %}
+{% block titre %}<h1>Sortie {{ sortie.type }} du {{ sortie.date ? sortie.date|date('d:m:Y') }}</h1>{% endblock %}
+{% block body %}
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Type</th>
+                <td>{{ sortie.type }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ sortie.date ? sortie.date|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Durée</th>
+                <td>
+                    {% set startDate = sortie.date ? sortie.date|date('H:i:s')  %}
+                    {% set difference = date().diff(date(startDate)) %}
+                    {% set leftHours = difference.h %}
+                    {% set leftMinutes = difference.i %}
+                    {% set leftSec = difference.s %}
+                    {{ leftHours }} heures.
+                    {{ leftMinutes }} minutes.
+                    {{ leftSec }} secondes.
+                </td>
+            </tr>
+            <tr>
+                <th>Distance</th>
+                <td>{{ sortie.distance }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ sortie.com }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a href="{{ path('app_sortie_edit', {'id': sortie.id}) }}" class="btn btn-info">Modifier</a></p>
+    <p>{{ include('sortie/_delete_form.html.twig') }}</p>
+    <p><a href="{{ path('app_sortie_index') }}" class="btn btn-warning">Retour à la liste</a></p>
+{% endblock %}

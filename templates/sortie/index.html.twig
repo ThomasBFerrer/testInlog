@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie index{% endblock %}
+{% block titre %}<h1>Vos Sortie</h1>{% endblock %}
+{% block body %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for sortie in sorties %}
+
+            <tr>
+                <td>{{ sortie.type }}</td>
+                <td>{{ sortie.date ? sortie.date|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_sortie_show', {'id': sortie.id}) }}" class="btn btn-info">Détails</a>
+                </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune sortie pour l'instant</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    <p><a href="{{ path('app_sortie_new') }}" class="btn btn-success">Préparez une Sortie</a></p>
+
+    <p><a href="{{ path('app_accueil') }}" class="btn btn-warning">Retour à l'accueil</a></p>
+{% endblock %}

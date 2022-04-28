@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+{% block titre %}<h1>Bienvenue {{ app.user.username }}</h1>{% endblock %}
+{% block body %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Mes Sorties</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="{{ path('app_sortie_index') }}" class="btn btn-info">Mes Sorties</a></td>
+                <td><a href="{{ path('app_sortie_new') }}" class="btn btn-info">Nouvelle Sortie</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a href="{{ path('app_logout') }}" type="button" class="btn btn-danger">Déconnexion</a></p>
+
+{% endblock %}
